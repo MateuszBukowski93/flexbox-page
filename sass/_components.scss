@@ -1,5 +1,5 @@
 .logo {
-  height: 100%;
+  height: 7rem;
   margin-left: 3rem;
 }
 .search {
@@ -8,6 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: $break-point-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+    
+  }
 
   &__input {
     font-family: inherit;
@@ -87,7 +92,7 @@
   }
   &__user-photo {
     height: 5rem;
-    width: 4rem;
+    width: 5rem;
     margin-right: 1rem;
     border-radius: 50%;
   }
@@ -98,11 +103,22 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $break-point-medium) {
+    margin: 0;
+    display: flex;
+  }
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+      @media only screen and (max-width: $break-point-medium) {
+        margin: 0;
+      }
+    }
+    @media only screen and (max-width: $break-point-medium) {
+      flex: 1;
     }
   }
   &__item::before {
@@ -136,6 +152,15 @@
     align-items: center;
     position: relative;
     z-index: 10;
+
+    @media only screen and (max-width: $break-point-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+    @media only screen and (max-width: $break-point-small) {
+      flex-direction: column;
+      padding: 1rem 0.5rem;
+    }
   }
 
   &__icon {
@@ -143,6 +168,12 @@
     height: 2rem;
     margin-right: 2rem;
     fill: currentColor;
+    @media only screen and (max-width: $break-point-small) {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+      width: 1.7rem;
+      height: 1.7rem;
+    }
   }
 }
 
@@ -151,6 +182,9 @@
   color: var(--color-grey-light-4);
   padding: 2.5rem;
   text-align: center;
+  @media only screen and (max-width: $break-point-medium) {
+    display: none;
+  }
 }
 .gallery {
   display: flex;
@@ -173,6 +207,10 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem;
+    @media only screen and (max-width: $break-point-small) {
+      font-size: 1.6rem;
+      padding: 1.25rem;
+    }
   }
 
   &__stars {
@@ -185,27 +223,43 @@
     width: 1.75rem;
     height: 1.75rem;
     fill: var(--color-primary);
+    @media only screen and (max-width: $break-point-small) {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   }
   &__location {
     font-size: 1.2rem;
     display: flex;
     align-items: center;
+    @media only screen and (max-width: $break-point-small) {
+      font-size: 1rem;
+    }
   }
   &__rating {
     background-color: var(--color-primary);
     color: #fff;
     margin-left: 3rem;
+    padding: 0 2.25rem;
     align-self: stretch;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    @media only screen and (max-width: $break-point-small) {
+      margin-left: 1rem;
+      padding: 0 1rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     padding: 0 2rem;
+    @media only screen and (max-width: $break-point-small) {
+      margin-left: 1.6rem;
+      padding: 0 1rem;
+    }
   }
 
   &__rating-count {
@@ -223,9 +277,18 @@
   cursor: pointer;
   transition: all 0.2;
 
+  span {
+    margin-left: 3px;
+    transition: margin-left 0.2s;
+  }
+
   &:hover {
     color: var(--color-grey-dark-1);
     animation: pulsate 1s infinite;
+
+    & span {
+      margin-left: 8px;
+    }
   }
   &:focus {
     outline: none;
@@ -245,132 +308,131 @@
     box-shadow: none;
   }
 }
- 
 
-.list{
-    list-style: none;
-    margin: 3rem 0;
-    padding: 3rem 0;
-    border-top: var(--line);
-    border-bottom:var(--line);
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
 
-    display:flex;
-    flex-wrap:wrap; 
+  display: flex;
+  flex-wrap: wrap;
 
-    &__item{
-        flex: 0 0 50%;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-    }
-    &__item::before{
-        content: "";
-        display: inline-block;
-        height: 1.5rem;
-        width:1.5rem;
-        margin-right: 1rem;
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  &__item::before {
+    content: "";
+    display: inline-block;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 1rem;
 
-        // background-image: url(../img/chevron-thin-right.svg);
-        // background-size: cover;
-        
-        background-color: var(--color-primary);
-        -webkit-mask-image: url(../img/chevron-thin-right.svg);
-        -webkit-mask-size: cover; 
-    }
+    // background-image: url(../img/chevron-thin-right.svg);
+    // background-size: cover;
 
-
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+  }
 }
 
-.recommend{
-    font-size:1.2rem;
-    color: var(--color-grey-light-3);
-    padding: 0 2rem;
-    
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &__count{
+.recommend {
+  font-size: 1.2rem;
+  color: var(--color-grey-light-3);
+  padding: 0 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__count {
     color: var(--color-primary);
     margin-right: auto;
-    }
+  }
 
-    &__friends{
+  &__friends {
+    display: flex;
+  }
 
-    }
+  &__photo {
+    box-sizing: content-box;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 0.5rem solid #fff;
 
-    &__photo{
-        box-sizing:content-box;
-        height: 5rem;
-        width: 5rem;
-        border-radius:50%;
-        border: .5rem solid #fff;
-      
-      &:not(:last-child) {
-        margin-right: -1.7rem;
-      }  
+    &:not(:last-child) {
+      margin-right: -1.8rem;
+      @media only screen and (max-width: $break-point-large) {
+        margin-right: -2.1rem;
+      }
+      @media only screen and (max-width: $break-point-medium) {
+        margin-right: -3rem;
+      }
     }
+  }
 }
 
+.review {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+  @media only screen and (max-width: $break-point-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
 
-.review{ 
-    background-color:#fff;
-    box-shadow: var(--shadow-light);
-    padding:3rem;
-    margin-bottom: 3.5rem;
+  &__text {
+    margin-bottom: 2rem;
     position: relative;
-    overflow: hidden;
+    z-index: 10;
+  }
+  &__user {
+    display: flex;
 
-    &__text {
-        margin-bottom: 2rem;
-        position: relative;
-        z-index: 10;
-    }
-    &__user {
-        display:flex;
-        
-        align-items: center;
-    }
-    &__photo {
-        
-        height: 6rem;
-        width: 6rem;
-        border-radius: 50%;
-        margin-right:1.5rem ;
-    }
+    align-items: center;
+  }
+  &__photo {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+  }
 
-    &__user-box {
-        margin-right: auto;
-        
-    }
+  &__user-box {
+    margin-right: auto;
+  }
 
-    &__user-name {
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
+  &__user-name {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
 
-    &__user-date {
-        font-size: 1rem;
-        color: var(--color-grey-light-4);
-    }
-    &__rating {
-        font-size:2rem;
-        color: var(--color-primary);
-        
-    }
-    &::before{
-        content:"\201C";
-        position: absolute;
-        color: var(--color-grey-light-4);
-        top:-3.1rem;
-        left:0.5rem;
-        font-size:10rem;
-        font-family: sans-serif;
-        z-index: 1;
-    }
+  &__user-date {
+    font-size: 1rem;
+    color: var(--color-grey-light-4);
+  }
+  &__rating {
+    font-size: 2rem;
+    color: var(--color-primary);
+  }
+  &::before {
+    content: "\201C";
+    position: absolute;
+    color: var(--color-grey-light-4);
+    top: -3.1rem;
+    left: 0.5rem;
+    font-size: 10rem;
+    font-family: sans-serif;
+    z-index: 1;
+  }
 }
-
-
-
-
