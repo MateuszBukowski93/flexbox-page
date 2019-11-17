@@ -1,5 +1,5 @@
 .logo {
-  height: 7rem;
+  height: 6.5rem;
   margin-left: 3rem;
 }
 .search {
@@ -91,8 +91,10 @@
     text-align: center;
   }
   &__user-photo {
-    height: 5rem;
-    width: 5rem;
+    height: 4rem;
+    width: 4rem;
+    background-image: url(../img/user.jpg);
+    background-size: cover;
     margin-right: 1rem;
     border-radius: 50%;
   }
@@ -355,13 +357,16 @@
   }
 
   &__friends {
+    
     display: flex;
+
   }
 
   &__photo {
     box-sizing: content-box;
     height: 4rem;
     width: 4rem;
+    object-fit: cover;
     border-radius: 50%;
     border: 0.5rem solid #fff;
 
@@ -403,6 +408,7 @@
   &__photo {
     height: 6rem;
     width: 6rem;
+    object-fit: cover;
     border-radius: 50%;
     margin-right: 1.5rem;
   }
